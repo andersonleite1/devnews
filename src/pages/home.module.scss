@@ -7,8 +7,22 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
 
+  img {
+    width: 33rem;
+    max-width: 100%;
+  }
+  @media (max-width: 930px) {
+    flex-direction: column-reverse;
+    margin: 3.5rem auto;
+    height: auto;
+    padding: 0 1rem;
+    text-align: center;
+    img {
+      margin-bottom: 2rem;
+    }
+  }
+}
 .hero {
   max-width: 600px;
   > span {
@@ -35,5 +49,26 @@
   }
   button {
     margin-top: 2.5rem;
+  }
+  @media (max-width: 930px) {
+    max-width: 100%;
+    > span {
+      display: inline-block;
+      font-size: 1.25rem;
+      margin-top: 2rem;
+    }
+    h1 {
+      font-size: 3.5rem;
+      line-height: 3.5rem;
+      margin-top: 1.5rem;
+    }
+    p {
+      font-size: 1.25rem;
+      line-height: 1.75rem;
+      margin-top: 1rem;
+    }
+    button {
+      margin: 2.5rem auto;
+    }
   }
 }
