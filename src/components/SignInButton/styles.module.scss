@@ -22,4 +22,18 @@
   &:hover {
     filter: brightness(0.9);
   }
+
+  @media (max-width: 560px) {
+    height: 2.5rem;
+    padding: 0 1rem;
+    font-size: 0.85rem;
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+    svg.closeIcon {
+      margin-left: 0.5rem;
+    }
+  }
+  
 }
