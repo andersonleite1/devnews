@@ -42,9 +42,13 @@
           position: absolute;
           bottom: 1px;
           left: 0;
-          background-color: var(--yellow-500);
+          background-color: var(--purple-100);
         }
       }
+    }
+    @media(max-width: 560px) {
+      font-size: 0.85rem;
+      margin-left: 2rem;
     }
   }
 
