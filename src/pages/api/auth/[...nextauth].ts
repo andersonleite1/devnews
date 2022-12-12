@@ -39,9 +39,26 @@ export default NextAuth({
       const { email } = user;
       try {
         await faunaClient.query(
-          qr.Create(qr.Collection("users"), {
-            data: { email },
-          })
+          qr.If(
+            qr.Not(
+              qr.Exists(
+                qr.Match(
+                  qr.Index('user_by_email'),
+                  qr.Casefold(user.email)
+                )
+              )
+            ),
+            qr.Create(
+              qr.Collection('users'),
+              { data: { email } }
+            ),
+            qr.Get(
+              qr.Match(
+                qr.Index('user_by_email'),
+                qr.Casefold(user.email)
+              )
+            )
+          )
         );
         return true;
       }
