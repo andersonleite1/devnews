@@ -1,6 +1,6 @@
 import Stripe from "stripe";
 
-const stripeApiKey = process.env.NEXT_PUBLIC_STRIPE_API_KEY || "";
+const stripeApiKey = process.env.STRIPE_API_KEY || "";
 
 export const stripe = new Stripe(
   stripeApiKey,
