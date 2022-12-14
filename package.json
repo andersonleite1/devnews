@@ -20,11 +20,15 @@
     "faunadb": "^4.7.1",
     "next": "13.0.3",
     "next-auth": "^4.17.0",
+    "prismic-dom": "^2.2.7",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.6.0",
     "sass": "^1.56.1",
     "stripe": "^11.1.0",
     "typescript": "4.9.3"
+  },
+  "devDependencies": {
+    "@types/prismic-dom": "^2.1.1"
   }
 }
