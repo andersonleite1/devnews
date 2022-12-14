@@ -1,0 +1,48 @@
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.posts {
+  max-width: 720px;
+  margin: 5rem auto 0;
+
+  a {
+    display: block;
+    cursor: pointer;
+
+    & + a {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--gray-700);
+    }
+  }
+
+  time {
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    color: var(--gray-300);
+  }
+
+  strong {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    margin-top: 1rem;
+    display: block;
+    color: var(--white);
+    transition: color 0.3s;
+
+    &:hover {
+      color: var(--cyan-500);
+    }
+  }
+
+  p {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    line-height: 1.625rem;
+    color: var(--gray-300);
+  }
+}
