@@ -1,7 +1,6 @@
 import { query as qr } from "faunadb";
 import { NextApiRequest, NextApiResponse } from "next";
 import { getSession } from "next-auth/react";
-import { type } from "os";
 import { faunaClient } from "../../services/fauna";
 import { stripe } from "../../services/stripe";
 
@@ -55,7 +54,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       payment_method_types: ['card'],
       billing_address_collection: 'required',
       line_items: [
-        { price: 'price_1M7RI8HRlVMCYkSYYdQn9nkx', quantity: 1 }
+        { price: 'price_1MK3RZHRlVMCYkSYfQagn8rl', quantity: 1 }
       ],
       mode: 'subscription',
       allow_promotion_codes: true,

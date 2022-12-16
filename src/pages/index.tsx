@@ -21,11 +21,11 @@ export default function Home({ product }: HomeProps) {
       
       <main className={styles.container}>
         <section className={styles.hero}>
-          <span>👏 Hey, welcome</span>
-          <h1>News about the <span>Dev</span> world.</h1>
+          <span>👏 Ei, bem-vindo</span>
+          <h1>Notícias sobre o <span>Dev</span> mundo.</h1>
           <p>
-            Get access to all the publications <br />
-            <span>for {product.amount}</span> month
+            Tenha acesso a todas as publicações <br />
+            por <span>{product.amount}</span> mensais
           </p>
           <SubscribeButton priceId={product.priceId} />
         </section>
@@ -36,14 +36,14 @@ export default function Home({ product }: HomeProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const price = await stripe.prices.retrieve('price_1M7RI8HRlVMCYkSYYdQn9nkx');
+  const price = await stripe.prices.retrieve('price_1MK3RZHRlVMCYkSYfQagn8rl');
 
   if (!price.id || !price.unit_amount) throw new Error('Price not found');
 
   const product = {
     priceId: price.id,
-    amount: new Intl.NumberFormat('en-US', {
-      currency: 'USD',
+    amount: new Intl.NumberFormat('pt-BR', {
+      currency: 'BRL',
       style: 'currency'
     }).format(price.unit_amount / 100)
   }
