@@ -20,6 +20,14 @@ const clientSecret = process.env.GITHUB_SECRET as string;
   };
 }
 
+interface sessionProps {
+  session: {
+    user: {
+      email: string;
+    };
+  };
+}
+
 if (!clientId || !clientSecret) throw new Error("Missing GitHub credentials");
 
 export default NextAuth({
@@ -35,6 +43,42 @@ export default NextAuth({
     }),
   ],
   callbacks: {
+    async session({ session }: sessionProps) {
+      try {
+        const userActiveSubscription = await faunaClient.query(
+          qr.Get(
+            qr.Intersection([
+              qr.Match(
+                qr.Index('subscription_by_user_ref'),
+                qr.Select(
+                  "ref",
+                  qr.Get(
+                    qr.Match(
+                      qr.Index('user_by_email'),
+                      qr.Casefold(session.user.email)
+                    )
+                  )
+                )
+              ),
+              qr.Match(
+                qr.Index('subscription_by_status'),
+                'active'
+              )
+            ])
+          )
+        );
+        return {
+          ...session,
+          activeSubscription: userActiveSubscription
+        }
+      }
+      catch (error) {
+        return {
+          ...session,
+          activeSubscription: null
+        }
+      }
+    },
     async signIn({ user, account, profile }: signInProps) {
       const { email } = user;
       try {
