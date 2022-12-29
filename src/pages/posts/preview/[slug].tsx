@@ -1,5 +1,6 @@
-import { GetStaticProps } from "next";
+import { GetStaticProps, GetStaticPropsContext, PreviewData } from "next";
 import { useSession } from "next-auth/react";
+import { NextParsedUrlQuery } from "next/dist/server/request-meta";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -61,7 +62,7 @@ export const getStaticPaths = () => {
   }
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps = async ({ params }: GetStaticPropsContext<NextParsedUrlQuery, PreviewData>) => {
   if (!params) {
     console.log('No params');
     return;

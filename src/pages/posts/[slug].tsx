@@ -1,8 +1,11 @@
-import { GetServerSideProps } from "next";
+import { GetServerSidePropsContext, PreviewData } from "next";
 import { getSession } from "next-auth/react";
 import Head from "next/head";
 import { RichText } from "prismic-dom";
+import { ParsedUrlQuery } from "querystring";
 import { getPrismicClient } from "../../services/prismic";
+
+import { Session } from "next-auth";
 
 import styles from './post.module.scss';
 
@@ -13,6 +16,10 @@ interface PostProps {
     content: string;
     updatedAt: string;
   }
+}
+
+interface ISession extends Session {
+  activeSubscription?: string;
 }
 
 export default function Post({ post }: PostProps) {
@@ -35,17 +42,18 @@ export default function Post({ post }: PostProps) {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ req, params }) => {
-  const session = await getSession({ req });
-  
+export const getServerSideProps = async ({ req, params }: GetServerSidePropsContext<ParsedUrlQuery, PreviewData>) => {
+  const session = await getSession({ req }) as ISession;
+
   if (!params) {
     console.log('No params');
     return;
   }
 
   const { slug } = params;
+  console.log('session', session);
 
-  if (!session?.activeSubscription) {
+  if (!session || !session?.activeSubscription) {
     console.log('No active subscription');
     return {
       redirect: {
