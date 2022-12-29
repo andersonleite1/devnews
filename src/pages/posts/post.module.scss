@@ -44,6 +44,14 @@
       -webkit-text-fill-color: transparent;
     }
   }
+
+  @media(max-width: 850px) {
+    margin: 3rem 2rem;
+
+    h1 {
+      font-size: 2.5rem;
+    }
+  }
 }
 
 .continueReading {
@@ -64,5 +72,9 @@
     &:hover {
       color: var(--cyan-500);
     }
+  }
+
+  @media(max-width: 850px) {
+    font-size: 1rem;
   }
 }
