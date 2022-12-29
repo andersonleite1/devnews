@@ -5,36 +5,11 @@ import { query as qr } from "faunadb";
 
 import { faunaClient } from "../../../services/fauna";
 
-const clientId = process.env.GITHUB_ID as string;
-const clientSecret = process.env.GITHUB_SECRET as string;
-
- interface signInProps {
-  user: {
-    email: string;
-  };
-  account: {
-    provider: string;
-  };
-  profile: {
-    email: string;
-  };
-}
-
-interface sessionProps {
-  session: {
-    user: {
-      email: string;
-    };
-  };
-}
-
-if (!clientId || !clientSecret) throw new Error("Missing GitHub credentials");
-
 export default NextAuth({
   providers: [
     GithubProvider({
-      clientId,
-      clientSecret,
+      clientId: process.env.GITHUB_ID as string,
+      clientSecret : process.env.GITHUB_SECRET as string,
       authorization: {
         params: {
           scope: 'read:user,user:email'
@@ -43,7 +18,10 @@ export default NextAuth({
     }),
   ],
   callbacks: {
-    async session({ session }: sessionProps) {
+    async session({ session }) {
+      if (!session.user || !session.user.email) {
+        return session;
+      }
       try {
         const userActiveSubscription = await faunaClient.query(
           qr.Get(
@@ -79,7 +57,10 @@ export default NextAuth({
         }
       }
     },
-    async signIn({ user, account, profile }: signInProps) {
+    async signIn({ user }) {
+      if (!user.email) {
+        return false;
+      }
       const { email } = user;
       try {
         await faunaClient.query(
