@@ -131,5 +131,12 @@ yarn dev
 
 
 ### Dê uma olhada como o projeto ficou! :eyes:
-- adicionar link aqui
+
+[find-tunes.vercel.app](https://find-tunes.vercel.app/)
+
+<p align="right">
+  <a href="https://www.linkedin.com/in/andersonleitedev/">
+    <img src="https://i.ibb.co/vHJWtxz/andersonleite.png" alt="andersonleite" border="0" width="250px">
+  </a>
+</p>
 
