@@ -132,7 +132,7 @@ yarn dev
 
 ### Dê uma olhada como o projeto ficou! :eyes:
 
-[find-tunes.vercel.app](https://find-tunes.vercel.app/)
+[devnews-andersonleite1.vercel.app/](https://devnews-andersonleite1.vercel.app/)
 
 <p align="right">
   <a href="https://www.linkedin.com/in/andersonleitedev/">
