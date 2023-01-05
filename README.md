@@ -1,6 +1,6 @@
 <h1 align="center">
 
-<img src="https://raw.githubusercontent.com/andersonleite1/devnews/082ab268a2cad1a04c0ecfc2b23d29352254f914/public/images/women.svg?token=ALM5YTWMRL767YM73VFFI5TDVWP4Q" alt="women coding" width="300px"/>
+<img src="https://raw.githubusercontent.com/andersonleite1/devnews/082ab268a2cad1a04c0ecfc2b23d29352254f914/public/images/women.svg?token=ALM5YTWMRL767YM73VFFI5TDVWP4Q" alt="women coding" width="300px"/> 
 
 </h1>
 
