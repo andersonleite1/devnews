@@ -92,5 +92,6 @@ export default NextAuth({
         return false;
       }
     }
-  }
+  },
+  secret: process.env.JWT_SECRET,
 });
